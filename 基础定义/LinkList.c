@@ -10,7 +10,7 @@ typedef struct LNode
     struct LNode *next;
 }*LinkList,LNode;
 
-bool InintList(LinkList *L) // 带头节点
+bool InintList(LinkList *L) // ??????
 {
     *L = (LinkList)malloc(sizeof(LNode));
     if( !L )
@@ -34,7 +34,7 @@ int Length(LinkList L)
     return len;
 }
 
-LinkList LocatedList(LinkList L,int e) // 按值 e 查找，返回结构指针
+LinkList LocatedList(LinkList L,int e) // ??? e ?????????????
 {
     LinkList temp = L->next;
     while(temp && temp->data != e)
@@ -44,7 +44,7 @@ LinkList LocatedList(LinkList L,int e) // 按值 e 查找，返回结构指针
     return temp;
 }
 
-LinkList getElem(LinkList L,int i) // 按位，返回结构指针 1 2 3 4 5
+LinkList getElem(LinkList L,int i) // ?????????????? 1 2 3 4 5
 {
     LinkList temp = L; //
     int count = 0;
@@ -56,8 +56,8 @@ LinkList getElem(LinkList L,int i) // 按位，返回结构指针 1 2 3 4 5
     return temp;
 }
 
-// 指定位置插入
-bool List_headinssert(LinkList L,int e) // 每次在头节点之后插入
+// ???????????
+bool List_headinssert(LinkList L,int e) // ???????????????
 {
     LinkList p = (LinkList)malloc(sizeof(LNode));
     if(!p)
@@ -70,7 +70,7 @@ bool List_headinssert(LinkList L,int e) // 每次在头节点之后插入
     return true;
 }
 
-bool List_insertrear(LinkList L,int e) // 在第 i 后     1 10 9 8 7 6 5 4 3 2
+bool List_insertrear(LinkList L,int e) // ??? i ??     1 10 9 8 7 6 5 4 3 2
 {
     LinkList temp = L;
     while(temp->next)  
@@ -88,7 +88,7 @@ bool List_insertrear(LinkList L,int e) // 在第 i 后     1 10 9 8 7 6 5 4 3 2
     return true;
 }
 
-bool Listinsert(LinkList L,int i, int e) // 将 data 为 e 的值查到第 i 位置上  L 1 2 3 4 5 6
+bool Listinsert(LinkList L,int i, int e) // ?? data ? e ?????z?? i ??????  L 1 2 3 4 5 6
 {
     LinkList temp = L;
     int count = 0;
@@ -96,7 +96,7 @@ bool Listinsert(LinkList L,int i, int e) // 将 data 为 e 的值查到第 i 位置上  L 
     {
         temp = temp->next;
         count++;
-    } // 此时 temp 应该在 i-1 位
+    } // ??? temp ????? i-1 ??
     if(temp)
     {
         return false;
@@ -108,7 +108,7 @@ bool Listinsert(LinkList L,int i, int e) // 将 data 为 e 的值查到第 i 位置上  L 
     return true;
 }
 
-bool Listdelete(LinkList L,int i,int *e) // 指定第 i 位删除
+bool Listdelete(LinkList L,int i,int *e) // ????? i ?????
 {
     LinkList temp = L;
     int count = 0;
@@ -116,7 +116,7 @@ bool Listdelete(LinkList L,int i,int *e) // 指定第 i 位删除
     {
         temp = temp->next;
         count++;
-    } // 此时 temp 应该在 i-1 位
+    } // ??? temp ????? i-1 ??
     if(temp)
     {
         return false;
