@@ -11,6 +11,16 @@ typedef struct
     int *data;
     int length;
 }sqlist; 
+// 函数原型声明
+bool Empty(sqlist L);
+bool nizhi(sqlist *L);
+bool InitList(sqlist *L);
+bool ListInsert(sqlist *L, int i, int e);
+bool ListDelete(sqlist *L, int i, int *e);
+int Length(sqlist L);
+int LocateElem(sqlist L, int e);
+bool GetElem(sqlist L, int i, int *e);
+void PrintList(sqlist L);
 bool nizhi(sqlist *L)
 {
     if(Empty(*L))
@@ -18,35 +28,56 @@ bool nizhi(sqlist *L)
         printf("sqlit is NULL\n");
         return false;
     }
-    int i = ((L->length)/2);
-    int j = ((L->length)/2);
-    while(i > 0 && j<(L->length))
-
-}
+    for(int i=0;i<(L->length/2);i++)
+    {
+        int temp = L->data[i];
+        L->data[i] = L->data[L->length-1-i];
+        L->data[L->length-1-i] = temp;
+    }
+    return true;
+}// 1 2 3 4 5     1 2 3 4 5 6 
+ // 0 1 2 3 4     0 1 2 3 4 5
 int main()
 {
     sqlist L;
     sqlist M;
     sqlist N;
     // 例如 1 2 3 4 5 6在3和4之间为中点，循环一次对称的交换
-    bool InitList(sqlist *L);
-    bool InitList(sqlist *M);
-    bool InitList(sqlist *N);
+    InitList(&L);
+    InitList(&M);
+    InitList(&N);
 
     //3中情况分别试一下。1.只有一个数 2.总数偶数 3.总数奇数
-    int i = 1;
-    bool ListInsert(sqlist *L,int i,int e);
-    for(int i = 1;i <= 5;i++)
-    {
-        int e = i;
-        bool ListInsert(sqlist *L,int i,int e);
-    }
+    ListInsert(&L, 1, 1);
+
+    // 测试情况2: 6个元素
     for(int i = 1;i <= 6;i++)
     {
-        int e = i;
-        bool ListInsert(sqlist *N,int i,int e);
+        ListInsert(&M,i,i);    
+    }
+    // 测试情况3: 7个元素
+    for(int i = 1;i <= 7;i++)
+    {
+        ListInsert(&N,i,i);    
     }
     
+    printf("L before: ");
+    PrintList(L);
+    nizhi(&L);
+    printf("L after: ");
+    PrintList(L);
+    
+    printf("M before: ");
+    PrintList(M);
+    nizhi(&M);
+    printf("M after: ");
+    PrintList(M);
+    
+    printf("N before: ");
+    PrintList(N);
+    nizhi(&N);
+    printf("N after: ");
+    PrintList(N);
 
     return 0;
 }

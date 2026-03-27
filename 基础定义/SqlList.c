@@ -36,7 +36,7 @@ int LocateElem(sqlist L,int e)
             return i;
         }
     }
-    return -1; // -1 ²»ÔÚÊı×éÏÂ±ê·¶Î§ÄÚ
+    return -1; // -1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â±ê·¶Î§ï¿½ï¿½
 }
 
 bool GetElem(sqlist L, int i,int *e)
@@ -73,7 +73,7 @@ bool ListDelete(sqlist *L, int i, int *e)
     *e = L->data[i-1];
     for(int j=i-1;j<(L->length-1);j++)
     {
-        L->data[j]=L.data[j+1];
+        L->data[j]=L->data[j+1];
     }
     L->length--;
     return true;
