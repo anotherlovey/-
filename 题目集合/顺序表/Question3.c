@@ -1,9 +1,10 @@
-//将顺序表所有元素逆置，空间复杂度为O(1)
-//以链表中间开始，对称交换
+//长度为n的顺序表L，编写一个时间复杂度为O(n)。空间复杂度为O(1)的算法，删除所有值为x的数据元素
+// 主要思路：定义一个k，初始值为0，遍历顺序表，如果当前元素不等于x（把等于x的排出掉），则将其赋值给L->data[k]，并将k加1。最后将L->length更新为k即可。
 #include<stdio.h>
 #include<stdbool.h>
 #include<stdlib.h>
 #include <string.h>
+
 #define maxsize 990
 
 typedef struct
@@ -21,43 +22,24 @@ int Length(sqlist L);
 int LocateElem(sqlist L, int e);
 bool GetElem(sqlist L, int i, int *e);
 void PrintList(sqlist L);
-bool nizhi(sqlist *L)
-{
-    if(Empty(*L))
-    {
-        printf("sqlit is NULL\n");
-        return false;
-    }
-    for(int i=0;i<(L->length/2);i++)
-    {
-        int temp = L->data[i];
-        L->data[i] = L->data[L->length-1-i];
-        L->data[L->length-1-i] = temp;
-    }
-    return true;
-}
+
+
 int main()
 {
     sqlist L;
     sqlist M;
     sqlist N;
 
-
-    // 例如 1 2 3 4 5 6在3和4之间为中点，循环一次对称的交换
     InitList(&L);
     InitList(&M);
     InitList(&N);
 
-    //3中情况分别试一下。1.只有一个数 2.总数偶数 3.总数奇数
-    // 测试情况1: 只有一个元素
     ListInsert(&L, 1, 1);
 
-    // 测试情况2: 6个元素
     for(int i = 1;i <= 6;i++)
     {
         ListInsert(&M,i,i);    
     }
-    // 测试情况3: 7个元素
     for(int i = 1;i <= 7;i++)
     {
         ListInsert(&N,i,i);    
@@ -65,25 +47,24 @@ int main()
     
     printf("L before: ");
     PrintList(L);
-    nizhi(&L);
+    
     printf("L after: ");
     PrintList(L);
     
     printf("M before: ");
     PrintList(M);
-    nizhi(&M);
+    
     printf("M after: ");
     PrintList(M);
     
     printf("N before: ");
     PrintList(N);
-    nizhi(&N);
-    printf("N after: ");
+    
+    printf("N after: ");   
     PrintList(N);
 
     return 0;
 }
-
 bool InitList(sqlist *L)
 {
     L->data = (int*)malloc(maxsize*sizeof(int));
@@ -94,10 +75,12 @@ bool InitList(sqlist *L)
     L->length=0;
     return true;
 }
+
 int Length(sqlist L)
 {
     return (L.length);
 }
+
 int LocateElem(sqlist L,int e)
 {
     for(int i=0;i<(L.length);i++)
@@ -107,8 +90,9 @@ int LocateElem(sqlist L,int e)
             return i;
         }
     }
-    return -1; // -1 不在数组下标范围内
+    return -1; // -1 锟斤拷锟斤拷锟斤拷锟斤拷锟铰标范围锟斤拷
 }
+
 bool GetElem(sqlist L, int i,int *e)
 {
     if(i>(L.length-1) || i<0)
@@ -118,6 +102,7 @@ bool GetElem(sqlist L, int i,int *e)
     *e = L.data[i-1];
     return true;
 }
+
 bool ListInsert(sqlist *L, int i, int e)
 {
     if(i<=0 || i>(L->length+1))
@@ -132,6 +117,7 @@ bool ListInsert(sqlist *L, int i, int e)
     L->length++;
     return true;
 }
+
 bool ListDelete(sqlist *L, int i, int *e)
 {
     if(i<=0 || i>(L->length))
@@ -146,6 +132,7 @@ bool ListDelete(sqlist *L, int i, int *e)
     L->length--;
     return true;
 }
+
 void PrintList(sqlist L)
 {
     if(L.length==0)
@@ -167,6 +154,7 @@ void PrintList(sqlist L)
         }
     }
 }
+
 bool Empty(sqlist L)
 {
     if(L.length==0)
@@ -175,6 +163,7 @@ bool Empty(sqlist L)
     }
     return false;
 }
+
 void DestroyList(sqlist *L)
 {
     free(L->data);

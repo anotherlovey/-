@@ -1,5 +1,5 @@
 //长度为n的顺序表L，编写一个时间复杂度为O(n)。空间复杂度为O(1)的算法，删除所有值为x的数据元素
-
+// 主要思路：定义一个k，初始值为0，遍历顺序表，如果当前元素不等于x（把等于x的排出掉），则将其赋值给L->data[k]，并将k加1。最后将L->length更新为k即可。
 #include<stdio.h>
 #include<stdbool.h>
 #include<stdlib.h>
