@@ -1,4 +1,4 @@
-//
+//长度为n的顺序表L，编写一个时间复杂度为O(n)。空间复杂度为O(1)的算法，删除所有值为x的数据元素
 
 #include<stdio.h>
 #include<stdbool.h>
@@ -22,6 +22,61 @@ int Length(sqlist L);
 int LocateElem(sqlist L, int e);
 bool GetElem(sqlist L, int i, int *e);
 void PrintList(sqlist L);
+
+void delete_x(sqlist*L,int x)
+{
+    int k = 0;
+    for(int i=0;i<(L->length);i++)
+    {
+        if(L->data[i] != x)
+        {
+            L->data[k] = L->data[i];
+            k++;
+        }
+    }
+    L->length = k;
+}
+int main()
+{
+    sqlist L;
+    sqlist M;
+    sqlist N;
+
+    InitList(&L);
+    InitList(&M);
+    InitList(&N);
+
+    ListInsert(&L, 1, 1);
+
+    for(int i = 1;i <= 6;i++)
+    {
+        ListInsert(&M,i,i);    
+    }
+    for(int i = 1;i <= 7;i++)
+    {
+        ListInsert(&N,i,i);    
+    }
+    
+    printf("L before: ");
+    PrintList(L);
+    delete_x(&L,1);
+    printf("L after: ");
+    PrintList(L);
+    
+    printf("M before: ");
+    PrintList(M);
+    delete_x(&M,3);
+    printf("M after: ");
+    PrintList(M);
+    
+    printf("N before: ");
+    PrintList(N);
+    delete_x(&N,7);
+    printf("N after: ");
+    PrintList(N);
+
+    return 0;
+}
 bool InitList(sqlist *L)
 {
     L->data = (int*)malloc(maxsize*sizeof(int));
@@ -126,19 +181,4 @@ void DestroyList(sqlist *L)
     free(L->data);
     L->data = NULL;
     L->length=0;
-}
-
-int main()
-{
-    sqlist L;
-    sqlist M;
-    sqlist N;
-    InitList(&L);
-    InitList(&M);
-    InitList(&N);
-    
-    // start 
-
-
-    return 0;
 }
