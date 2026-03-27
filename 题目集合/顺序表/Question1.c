@@ -3,7 +3,6 @@
 #include<stdbool.h>
 #include<stdlib.h>
 #include <string.h>
-
 #define maxsize 990
 
 typedef struct
@@ -35,8 +34,7 @@ bool nizhi(sqlist *L)
         L->data[L->length-1-i] = temp;
     }
     return true;
-}// 1 2 3 4 5     1 2 3 4 5 6 
- // 0 1 2 3 4     0 1 2 3 4 5
+}
 int main()
 {
     sqlist L;
@@ -48,6 +46,7 @@ int main()
     InitList(&N);
 
     //3中情况分别试一下。1.只有一个数 2.总数偶数 3.总数奇数
+    // 测试情况1: 只有一个元素
     ListInsert(&L, 1, 1);
 
     // 测试情况2: 6个元素
