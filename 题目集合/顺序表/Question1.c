@@ -40,6 +40,8 @@ int main()
     sqlist L;
     sqlist M;
     sqlist N;
+
+    
     // 例如 1 2 3 4 5 6在3和4之间为中点，循环一次对称的交换
     InitList(&L);
     InitList(&M);
